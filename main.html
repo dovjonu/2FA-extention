@@ -2,12 +2,17 @@
 <html>
   <head>
     <script src="scripts/popup.js"></script>
+    <script src="scripts/TotpSecret.js"></script>
     <script src="libraries/JS-OTP/dist/jsOTP.min.js"></script>
     <link rel="stylesheet" href="style/main.css ">
   </head>
   <body>
     <p>Add new 2FA:</p>
     <table>
+      <tr>
+        <td><label>Name:</label></td>
+        <td><input type="text" id="nameInput" value=""></td>
+      </tr>
       <tr>
         <td><label>Secret:</label></td>
         <td><input type="text" id="secretInput" value=""></td>
@@ -20,6 +25,7 @@
         <td><label>Code length:</label></td>
         <td><input type="text" id="lengthInput" value=""></td>
       </tr>
+      <tr><td></td><td><input type="button" id="createSecretButton" value="Create new 2FA"></td></tr>
     </table>
     <br>
     

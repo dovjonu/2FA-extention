@@ -39,6 +39,8 @@ function create2FA(){
     chrome.storage.local.set({ totpSecrets: secretsToStore }, function() {
       console.log('New secret added!');
     });
+
+    load2FA();
   });
 
 }
@@ -67,7 +69,11 @@ function load2FA(){
             var totp = new jsOTP.totp();
             var codeLabel = totp.getOtp(secret.secret);
             
-            list2FA.innerHTML += '<tr><td><input type="text" id="' + nameId + '" value="' + nameLabel + '"></td><td><input type="button" id="' + editId + '" value="&#128190; Edit name"></td></tr><tr><td><input type="text" id="' + secretId + '" value="' + secretLabel + '" readonly></td><td><input type="button" id="' + deleteId + '" value="&#x274C; Delete"></td></tr><tr><td><input type="text" id="' + codeId + '" value="' + codeLabel + '" readonly></td><td><input type="button" id="' + copyId + '" value="&#x1F5D2; Copy code"></td></tr>';
+            list2FA.innerHTML += '<tr><td><input type="text" id="' + nameId + '" value="' + nameLabel +
+             '"></td><td><input type="button" id="' + editId + '" value="&#128190; Edit name"></td></tr><tr><td><input type="text" id="' + secretId + 
+             '" value="' + secretLabel + '" readonly></td><td><input type="button" id="' + deleteId + 
+             '" value="&#x274C; Delete"></td></tr><tr><td><input type="text" id="' + codeId + '" value="' + codeLabel + 
+             '" readonly></td><td><input type="button" id="' + copyId + '" value="&#x1F5D2; Copy code"></td></tr><br>';
             // Add event listeners for buttons
             document.getElementById(editId).addEventListener('click', function() {
                 editSecretName(secret.id, document.getElementById(nameId).value);
@@ -160,27 +166,3 @@ function copyTextToClipboard(text) {
     //other elements can get access to this.
     document.body.removeChild(copyFrom);
   }
-
-
-
-
-
-
-
-
-
-
-
-  
-//   <tr>
-//   <td><label id="NAME_ID" value="NAME"></label></td>
-//   <td><input type="button" id="EDIT_ID"></td>
-// </tr>
-// <tr>
-//   <td><input type="text" id="SECRETID" value="SECRET" readonly></td>
-//   <td><input type="button" id="DELETE_ID"></td>
-// </tr>
-// <tr>
-//   <td><input type="text" id="CODE_ID" value="" readonly></td>
-//   <td><input type="button" id="COPY_ID"></td>
-// </tr>
